@@ -15,13 +15,15 @@ if linkage != nil
 end
 
 target 'VideoWaterMarking' do
-  config = use_native_modules!
+  pod 'ffmpeg-kit-react-native', :subspecs => ['full-gpl'], :podspec => '../node_modules/ffmpeg-kit-react-native/ffmpeg-kit-react-native.podspec'
 
+  config = use_native_modules!
   use_react_native!(
     :path => config[:reactNativePath],
     # An absolute path to your application root.
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
+  
 
   target 'VideoWaterMarkingTests' do
     inherit! :complete
